@@ -1,9 +1,10 @@
 import { swap } from './utils.js'
-import { bubbleSort, selectionSort } from './algorithms.js'
+import { bubbleSort, selectionSort, insertionSort } from './algorithms.js'
 
 const algorithms = {
   'Bubble Sort': bubbleSort,
   'Selection Sort': selectionSort,
+  'Insertion Sort': insertionSort,
 }
 
 let selectedAlgorithm = bubbleSort
@@ -66,6 +67,7 @@ const showBars = move => {
     if (move && move.indicies.includes(i)) {
       bar.style.backgroundColor = move.type === 'swap' ? '#E52B50' : '#4A9976'
     }
+
     barsContainer.appendChild(bar)
   }
 }
