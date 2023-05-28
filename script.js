@@ -1,12 +1,13 @@
 import { swap } from './utils.js'
-import { bubbleSort } from './algorithms.js'
+import { bubbleSort, selectionSort } from './algorithms.js'
 
 const algorithms = {
   'Bubble Sort': bubbleSort,
+  'Selection Sort': selectionSort,
 }
 
 let selectedAlgorithm = bubbleSort
-let howManyRandomNumbers = 20
+let howManyRandomNumbers = 50
 let arrayOfRandomNumbers = []
 let audioCtx = null
 const duration = 0.1
@@ -18,7 +19,6 @@ const init = () => {
     arrayOfRandomNumbers.push(Math.random())
   }
 
-  showAlgorithmsOptions()
   showBars()
 }
 
@@ -46,7 +46,7 @@ const animate = moves => {
 
   showBars(move)
 
-  setTimeout(() => animate(moves), 50)
+  setTimeout(() => animate(moves), 25)
 }
 
 const showBars = move => {
@@ -65,8 +65,6 @@ const showBars = move => {
 }
 
 const showAlgorithmsOptions = () => {
-  selectButton.innerHTML = ''
-
   const keys = Object.keys(algorithms)
   keys.forEach(name => {
     const option = document.createElement('option')
@@ -112,3 +110,4 @@ generateButton.addEventListener('click', init)
 playButton.addEventListener('click', play)
 
 init()
+showAlgorithmsOptions()
