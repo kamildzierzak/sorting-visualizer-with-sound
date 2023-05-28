@@ -31,4 +31,5 @@ const selectionSort = array => {
 
   return moves
 }
+
 export { bubbleSort, selectionSort }

@@ -24,8 +24,8 @@ body {
 
 #playground {
   height: 40vh;
-  width: 80vw;
-  max-width: 80vw;
+  width: 90vw;
+  max-width: 90vw;
   max-height: 400px;
   display: flex;
   justify-content: center;
@@ -35,15 +35,23 @@ body {
 #panel {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 0.5rem;
 }
 
-#buttons {
+#slider {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+}
+
+#quantity {
+  margin: 0.5rem 0;
+}
+
+#buttons {
+  display: flex;
   gap: 0.5rem;
 }
 
@@ -84,7 +92,7 @@ button:hover {
 }
 
 .bar {
-  width: 0.5rem;
+  width: 1vw;
   background-color: #050301;
-  margin: 0 2px;
+  margin: 0 1px;
 }

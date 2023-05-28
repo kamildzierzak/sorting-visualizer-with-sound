@@ -102,10 +102,20 @@ const playNote = (frequency, duration) => {
 const playground = document.querySelector('#playground')
 
 const selectButton = document.querySelector('#algorithm-select')
+const rangeInput = document.querySelector('#powerRanger')
+const selectedValueText = document.querySelector('#quantity')
 const generateButton = document.querySelector('#generate')
 const playButton = document.querySelector('#play')
 
 selectButton.addEventListener('change', selectAlgorithm)
+rangeInput.addEventListener('input', e => {
+  const selectedValue = rangeInput.value
+  howManyRandomNumbers = selectedValue
+  selectedValueText.innerText = selectedValue
+})
+rangeInput.addEventListener('change', e => {
+  init()
+})
 generateButton.addEventListener('click', init)
 playButton.addEventListener('click', play)
 
