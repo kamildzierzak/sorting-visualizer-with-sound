@@ -136,7 +136,10 @@ speedInput.addEventListener('input', e => {
   speedValueText.innerText = selectedValue
 })
 
-generateButton.addEventListener('click', init)
+generateButton.addEventListener('click', e => {
+  stop()
+  init()
+})
 
 playButton.addEventListener('click', play)
 
