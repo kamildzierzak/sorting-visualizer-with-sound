@@ -22,7 +22,7 @@ body {
   font-size: 2rem;
 }
 
-#playground {
+#barsContainer {
   height: 40vh;
   width: 90vw;
   max-width: 90vw;
@@ -33,20 +33,40 @@ body {
 }
 
 #panel {
+  width: 90vw;
+  max-width: 90vw;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
-#slider {
+#algorithmPicker {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+#sliders {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#sliders > div {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
 #quantity {
+  margin: 0.5rem 0;
+}
+
+#speed {
   margin: 0.5rem 0;
 }
 
