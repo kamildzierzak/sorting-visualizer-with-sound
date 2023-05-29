@@ -52,4 +52,7 @@ const insertionSort = array => {
   return moves
 }
 
-export { bubbleSort, selectionSort, insertionSort }
+// TODO: Implement merge sort
+const mergeSort = array => {}
+
+export { bubbleSort, selectionSort, insertionSort, mergeSort }

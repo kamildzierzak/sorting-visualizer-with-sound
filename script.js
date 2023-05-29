@@ -1,10 +1,16 @@
 import { swap } from './utils.js'
-import { bubbleSort, selectionSort, insertionSort } from './algorithms.js'
+import {
+  bubbleSort,
+  selectionSort,
+  insertionSort,
+  // mergeSort,
+} from './algorithms.js'
 
 const algorithms = {
   'Bubble Sort': bubbleSort,
   'Selection Sort': selectionSort,
   'Insertion Sort': insertionSort,
+  // 'Merge Sort': mergeSort,
 }
 
 let selectedAlgorithm = bubbleSort
