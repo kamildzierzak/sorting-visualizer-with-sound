@@ -1,10 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
   background-color: #fff;
-  color: #000;
+  color: #050301;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 1rem;
@@ -19,81 +23,113 @@ body {
 }
 
 #title {
+  margin: 0;
+  padding: 1.5rem;
+  width: 100%;
   font-size: 2rem;
+  color: #fff;
+  background-color: #e52b50;
 }
 
 #barsContainer {
   height: 40vh;
   width: 90vw;
   max-width: 90vw;
-  max-height: 400px;
+  max-height: 500px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 5vh;
 }
 
-#panel {
-  width: 90vw;
+.bar {
+  width: 1vw;
+  background-color: #050301;
+  margin: 0 1px;
+}
+
+#controlPanelContainer {
+  display: flex;
+  flex-direction: column;
+  min-width: 40vw;
   max-width: 90vw;
+  gap: 1rem;
+  margin-top: 5vh;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #050301;
+  text-align: center;
+}
+
+.info {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #050301;
+  text-align: center;
+}
+
+#algorithmSelectContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#algorithmSelect {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.35rem 1.2rem;
+  border: 0.1rem solid #050301;
+  border-radius: 0.15rem;
+  text-decoration: none;
+  color: #050301;
+  background-color: transparent;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+#algorithmSelect:hover {
+  color: #fff;
+  background-color: #050301;
+}
+
+#slidersContainer {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+}
+
+.sliderBar {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#buttonsContainer {
+  display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  margin-bottom: calc(5vh - 1rem);
 }
 
-#algorithmPicker {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-#sliders {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-#sliders > div {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  gap: 0.5rem;
-}
-
-#quantity {
-  margin: 0.5rem 0;
-}
-
-#speed {
-  margin: 0.5rem 0;
-}
-
-#buttons {
-  display: flex;
-  gap: 0.5rem;
-}
-
-#generate {
+#generateBtn {
   animation-delay: 0.07s;
 }
 
-#play {
+#playBtn {
   animation-delay: 0.14s;
 }
 
 button {
   display: inline-block;
   padding: 0.35rem 1.2rem;
-  border: 0.1rem solid #000;
-  margin: 0 0.3rem 0.3rem 0;
-  border-radius: 0.12rem;
-  box-sizing: border-box;
+  border: 0.1rem solid #050301;
+  border-radius: 0.15rem;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
-  color: #000;
+  color: #050301;
   background-color: transparent;
   text-align: center;
   transition: all 0.2s;
@@ -101,18 +137,11 @@ button {
 
 button:hover {
   color: #fff;
-  background-color: #000;
+  background-color: #050301;
 }
 
 @media all and (max-width: 30rem) {
   button {
     display: block;
-    margin: 0.4rem auto;
   }
-}
-
-.bar {
-  width: 1vw;
-  background-color: #050301;
-  margin: 0 1px;
 }

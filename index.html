@@ -8,45 +8,47 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
-    <h1 id="title">Sorting Visualizer with Sound</h1>
-    <hr />
+    <h1 id="title">Sorting Visualizer</h1>
     <div id="barsContainer"></div>
-    <hr />
-    <div id="panel">
-      <div id="algorithmPicker">
-        <label for="algorithm-select">Algorithm:</label>
-        <select name="algorithm" id="algorithm-select"></select>
+    <div id="controlPanelContainer">
+      <div id="buttonsContainer">
+        <button id="generateBtn">Generate</button>
+        <button id="playBtn">Start</button>
+        <button id="stopBtn">Stop</button>
       </div>
-      <div id="sliders">
-        <div>
-          <label for="powerRanger">Quantity:</label>
-          <input
-            type="range"
-            min="10"
-            max="1000"
-            step="10"
-            value="50"
-            id="powerRanger"
-          />
-          <p id="quantity">50</p>
-        </div>
-        <div>
-          <label for="speedRanger">Animation speed (ms):</label>
-          <input
-            type="range"
-            min="10"
-            max="200"
-            step="10"
-            value="10"
-            id="speedRanger"
-          />
-          <p id="speed">10</p>
-        </div>
+      <div id="algorithmSelectContainer">
+        <label for="algorithmSelect">Algorithm</label>
+        <select name="algorithm" id="algorithmSelect"></select>
       </div>
-      <div id="buttons">
-        <button id="generate">Generate</button>
-        <button id="play">Start</button>
-        <button id="stop">Stop</button>
+      <div id="slidersContainer">
+        <div class="sliderBar">
+          <label for="powerRanger">Quantity</label>
+          <div>
+            <p class="info" id="quantity">50</p>
+            <input
+              type="range"
+              min="10"
+              max="1000"
+              step="10"
+              value="50"
+              id="powerRanger"
+            />
+          </div>
+        </div>
+        <div class="sliderBar">
+          <label for="speedRanger">Speed (ms)</label>
+          <div>
+            <p class="info" id="speed">10</p>
+            <input
+              type="range"
+              min="10"
+              max="500"
+              step="10"
+              value="10"
+              id="speedRanger"
+            />
+          </div>
+        </div>
       </div>
     </div>
 

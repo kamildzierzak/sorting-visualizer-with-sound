@@ -1,16 +1,14 @@
 import { swap } from './utils.js'
-import {
-  bubbleSort,
-  selectionSort,
-  insertionSort,
-  // mergeSort,
-} from './algorithms.js'
+import { selectionSort } from './algorithms/selectionSort.js'
+import { insertionSort } from './algorithms/insertionSort.js'
+import { bubbleSort } from './algorithms/bubbleSort.js'
 
 const algorithms = {
   'Bubble Sort': bubbleSort,
   'Selection Sort': selectionSort,
   'Insertion Sort': insertionSort,
   // 'Merge Sort': mergeSort,
+  // 'Quick Sort': quickSort,
 }
 
 let selectedAlgorithm = bubbleSort
@@ -71,7 +69,15 @@ const showBars = move => {
     bar.classList.add('bar')
 
     if (move && move.indicies.includes(i)) {
-      bar.style.backgroundColor = move.type === 'swap' ? '#E52B50' : '#4A9976'
+      if (move.type === 'compare') {
+        bar.style.backgroundColor = '#4A9976'
+      }
+      if (move.type === 'swap') {
+        bar.style.backgroundColor = '#E52B50'
+      }
+      if (move.type === 'sorted') {
+        bar.style.backgroundColor = '#FFBF00'
+      }
     }
 
     barsContainer.appendChild(bar)
@@ -117,14 +123,14 @@ const playNote = (frequency, duration) => {
 
 const barsContainer = document.querySelector('#barsContainer')
 
-const selectButton = document.querySelector('#algorithm-select')
+const selectButton = document.querySelector('#algorithmSelect')
 const rangeInput = document.querySelector('#powerRanger')
 const rangeValueText = document.querySelector('#quantity')
 const speedInput = document.querySelector('#speedRanger')
 const speedValueText = document.querySelector('#speed')
-const generateButton = document.querySelector('#generate')
-const playButton = document.querySelector('#play')
-const stopButton = document.querySelector('#stop')
+const generateButton = document.querySelector('#generateBtn')
+const playButton = document.querySelector('#playBtn')
+const stopButton = document.querySelector('#stopBtn')
 
 selectButton.addEventListener('change', selectAlgorithm)
 

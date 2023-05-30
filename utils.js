@@ -14,4 +14,32 @@ const indexOfMin = (array, start) => {
   return min
 }
 
-export { swap, indexOfMin }
+const partition = (array, left, right) => {
+  let i = left + 1
+  let j = right
+  let pivot = array[left]
+  let temp
+
+  do {
+    while (i < right && array[i] <= pivot) i++
+    while (j > left && array[j] >= pivot) j--
+
+    if (i < j) {
+      temp = array[i]
+      array[i] = array[j]
+      array[j] = temp
+    }
+  } while (i < j)
+
+  if (array[i] > pivot) {
+    array[left] = array[i - 1]
+    array[i - 1] = pivot
+    return i - 1
+  } else {
+    array[left] = array[i]
+    array[i] = pivot
+    return i
+  }
+}
+
+export { swap, indexOfMin, partition }
