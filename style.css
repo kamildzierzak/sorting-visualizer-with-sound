@@ -43,7 +43,7 @@ body {
 }
 
 .bar {
-  width: 1vw;
+  min-width: 10px;
   background-color: #050301;
   margin: 0 1px;
 }

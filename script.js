@@ -12,14 +12,20 @@ const algorithms = {
 }
 
 let selectedAlgorithm = bubbleSort
-let howManyRandomNumbers = 50
+
+let windowWidth = window.innerWidth
+let barWidth = 10
+const barsMarginWidth = 1
+let barTotalWidth = barWidth + barsMarginWidth
+let maximumNumberOfBars = Math.floor(((9 / 10) * windowWidth) / barTotalWidth)
+let howManyRandomNumbers = 10
 let arrayOfRandomNumbers = []
 let audioCtx = null
-let animateDuration = 10
+let animateDuration = 25
 let animationTimeout = null
 const noteDuration = 0.1
 
-const init = () => {
+const generate = () => {
   arrayOfRandomNumbers = []
 
   for (let i = 0; i < howManyRandomNumbers; i++) {
@@ -29,7 +35,7 @@ const init = () => {
   showBars()
 }
 
-const play = () => {
+const start = () => {
   const copyOfArrayOfRandomNumbers = [...arrayOfRandomNumbers]
   const moves = selectedAlgorithm(copyOfArrayOfRandomNumbers)
   animate(moves)
@@ -37,6 +43,21 @@ const play = () => {
 
 const stop = () => {
   clearTimeout(animationTimeout)
+}
+
+const showAlgorithmsOptions = () => {
+  const keys = Object.keys(algorithms)
+  keys.forEach(name => {
+    const option = document.createElement('option')
+    option.value = name
+    option.innerText = name
+    selectButton.appendChild(option)
+  })
+}
+
+const selectAlgorithm = () => {
+  selectedAlgorithm = algorithms[selectButton.value]
+  stop()
 }
 
 const animate = moves => {
@@ -65,6 +86,7 @@ const showBars = move => {
 
   for (let i = 0; i < arrayOfRandomNumbers.length; i++) {
     const bar = document.createElement('div')
+
     bar.style.height = arrayOfRandomNumbers[i] * 100 + '%'
     bar.classList.add('bar')
 
@@ -82,21 +104,6 @@ const showBars = move => {
 
     barsContainer.appendChild(bar)
   }
-}
-
-const showAlgorithmsOptions = () => {
-  const keys = Object.keys(algorithms)
-  keys.forEach(name => {
-    const option = document.createElement('option')
-    option.value = name
-    option.innerText = name
-    selectButton.appendChild(option)
-  })
-}
-
-const selectAlgorithm = () => {
-  selectedAlgorithm = algorithms[selectButton.value]
-  stop()
 }
 
 const playNote = (frequency, duration) => {
@@ -121,19 +128,21 @@ const playNote = (frequency, duration) => {
   node.connect(audioCtx.destination)
 }
 
+const handleWindowResize = () => {
+  windowWidth = window.innerWidth
+  barWidth = (2 * windowWidth) / 100
+  barTotalWidth = barWidth + barsMarginWidth
+}
+
+window.addEventListener('resize', handleWindowResize)
+
 const barsContainer = document.querySelector('#barsContainer')
 
 const selectButton = document.querySelector('#algorithmSelect')
-const rangeInput = document.querySelector('#powerRanger')
-const rangeValueText = document.querySelector('#quantity')
-const speedInput = document.querySelector('#speedRanger')
-const speedValueText = document.querySelector('#speed')
-const generateButton = document.querySelector('#generateBtn')
-const playButton = document.querySelector('#playBtn')
-const stopButton = document.querySelector('#stopBtn')
-
 selectButton.addEventListener('change', selectAlgorithm)
 
+const rangeInput = document.querySelector('#powerRanger')
+const rangeValueText = document.querySelector('#quantity')
 rangeInput.addEventListener('input', e => {
   let selectedValue = rangeInput.value
   howManyRandomNumbers = selectedValue
@@ -141,23 +150,33 @@ rangeInput.addEventListener('input', e => {
 })
 rangeInput.addEventListener('change', e => {
   stop()
-  init()
+  generate()
 })
 
+const speedInput = document.querySelector('#speedRanger')
+const speedValueText = document.querySelector('#speed')
 speedInput.addEventListener('input', e => {
   let selectedValue = speedInput.value
   animateDuration = selectedValue
   speedValueText.innerText = selectedValue
 })
 
+const generateButton = document.querySelector('#generateBtn')
 generateButton.addEventListener('click', e => {
   stop()
-  init()
+  generate()
 })
 
-playButton.addEventListener('click', play)
+const playButton = document.querySelector('#playBtn')
+playButton.addEventListener('click', start)
 
+const stopButton = document.querySelector('#stopBtn')
 stopButton.addEventListener('click', stop)
 
-init()
+const setupOptions = () => {
+  rangeInput.max = maximumNumberOfBars
+}
+
 showAlgorithmsOptions()
+setupOptions()
+generate()
