@@ -97,9 +97,9 @@ const showBars = move => {
       if (move.type === 'swap') {
         bar.style.backgroundColor = '#E52B50'
       }
-      if (move.type === 'sorted') {
-        bar.style.backgroundColor = '#FFBF00'
-      }
+      // if (move.type === 'sorted') {
+      //   bar.style.backgroundColor = '#FFBF00'
+      // }
     }
 
     barsContainer.appendChild(bar)
