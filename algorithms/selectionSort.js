@@ -10,13 +10,13 @@ const selectionSort = array => {
     // let min = indexOfMin(array, i)
     // indexOfMin(array, i)
     for (let j = i; j < array.length; j++) {
-      moves.push({ indicies: [j, min], type: 'compare' })
+      moves.push({ indices: [j, min], type: 'compare' })
       if (array[j] < array[min]) {
         min = j
       }
     }
 
-    moves.push({ indicies: [i, min], type: 'swap' })
+    moves.push({ indices: [i, min], type: 'swap' })
     swap(array, i, min)
     i++
   }

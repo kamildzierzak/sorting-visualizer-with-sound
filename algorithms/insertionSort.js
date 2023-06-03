@@ -6,9 +6,9 @@ const insertionSort = array => {
     let current = next
     let temp = array[next]
 
-    moves.push({ indicies: [current, current - 1], type: 'compare' })
+    moves.push({ indices: [current, current - 1], type: 'compare' })
     while (current > 0 && temp < array[current - 1]) {
-      moves.push({ indicies: [current, current - 1], type: 'swap' })
+      moves.push({ indices: [current, current - 1], type: 'swap' })
       array[current] = array[current - 1]
       current--
     }

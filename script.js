@@ -2,12 +2,13 @@ import { swap } from './utils.js'
 import { selectionSort } from './algorithms/selectionSort.js'
 import { insertionSort } from './algorithms/insertionSort.js'
 import { bubbleSort } from './algorithms/bubbleSort.js'
+import { mergeSortWrapper as mergeSort } from './algorithms/mergeSort.js'
 
 const algorithms = {
   'Bubble Sort': bubbleSort,
   'Selection Sort': selectionSort,
   'Insertion Sort': insertionSort,
-  // 'Merge Sort': mergeSort,
+  'Merge Sort': mergeSort,
   // 'Quick Sort': quickSort,
 }
 
@@ -67,7 +68,7 @@ const animate = moves => {
   }
 
   const move = moves.shift()
-  const [i, j] = move.indicies
+  const [i, j] = move.indices
 
   if (move.type === 'swap') {
     swap(arrayOfRandomNumbers, i, j)
@@ -90,16 +91,13 @@ const showBars = move => {
     bar.style.height = arrayOfRandomNumbers[i] * 100 + '%'
     bar.classList.add('bar')
 
-    if (move && move.indicies.includes(i)) {
+    if (move && move.indices.includes(i)) {
       if (move.type === 'compare') {
         bar.style.backgroundColor = '#4A9976'
       }
       if (move.type === 'swap') {
         bar.style.backgroundColor = '#E52B50'
       }
-      // if (move.type === 'sorted') {
-      //   bar.style.backgroundColor = '#FFBF00'
-      // }
     }
 
     barsContainer.appendChild(bar)
